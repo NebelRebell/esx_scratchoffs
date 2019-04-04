@@ -1,12 +1,12 @@
 Config = {}
 
--- Should a used scratchoff ticket be dispensed after use
+-- Sollte ein verwendetes Rubbellos nach Gebrauch ausgegeben werden?
 Config.GiveUsedScratchoffAfterUse = true
 
--- The chance of winning. By default this is set to 2 (1 in 2 chance of winning).
--- In order to determine a winner the system picks a number between 1 and
--- Config.WinningOdds. If the matching number is a 1 then it is considered a
--- winning ticket. By default a value of "2" gives a 50% chance to win.
+-- Die Chance zu gewinnen. Standardmäßig ist dieser Wert auf 2 gesetzt (1 von 2 Gewinnchancen).
+-- Um einen Gewinner zu ermitteln, wählt das System eine Zahl zwischen 1 und 1.
+-- Config.WinningOdds. Wenn die übereinstimmende Zahl eine 1 ist, dann wird sie als ein
+-- Gewinnlos. Standardmäßig gibt ein Wert von "2" eine Chance von 50% zu gewinnen.
 Config.OneInChanceOfWinning = 2
 
 -- The minimum amount of a winning ticket
