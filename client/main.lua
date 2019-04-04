@@ -1,24 +1,24 @@
 ESX = nil
 
 Citizen.CreateThread(function()
-  while ESX == nil do
-    TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-    Citizen.Wait(0)
-  end
+    while ESX == nil do
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+        Citizen.Wait(0)
+    end
 end)
 
 RegisterNetEvent("scratchoffs:view")
 AddEventHandler("scratchoffs:view", function()
-  ESX.UI.Menu.CloseAll()
+    ESX.UI.Menu.CloseAll()
 
-  if scratchoffIsAWinner() then
-    reward = determineWinningAmount()
-    dispenseReward(reward)
-    showWonNotification(reward)
-  else
-    TriggerServerEvent('scratchoffs:dispenseUsedScratchoff')
-    showLostNotification()
-  end
+    if scratchoffIsAWinner() then
+        reward = determineWinningAmount()
+        dispenseReward(reward)
+        showWonNotification(reward)
+    else
+        TriggerServerEvent('scratchoffs:dispenseUsedScratchoff')
+        showLostNotification()
+    end
 
 end)
 
@@ -29,8 +29,8 @@ end)
    boolean
 ]]
 function scratchoffIsAWinner()
-  math.randomseed(GetGameTimer())
-  return (math.random(1, Config.OneInChanceOfWinning) == 1)
+    math.randomseed(GetGameTimer())
+    return (math.random(1, Config.OneInChanceOfWinning) == 1)
 end
 
 
@@ -41,8 +41,8 @@ end
    integer
 ]]
 function determineWinningAmount()
-  math.randomseed(GetGameTimer())
-  return math.random(Config.WinningAmountMinimum, Config.WinningAmountMaximum)
+    math.randomseed(GetGameTimer())
+    return math.random(Config.WinningAmountMinimum, Config.WinningAmountMaximum)
 end
 
 --[[
@@ -54,7 +54,7 @@ end
    void
 ]]
 function dispenseReward(amount)
-  TriggerServerEvent('scratchoffs:dispenseReward', amount)
+    TriggerServerEvent('scratchoffs:dispenseReward', amount)
 end
 
 --[[
@@ -66,7 +66,7 @@ end
    void
 ]]
 function showWonNotification(amount)
-  ESX.ShowNotification("~o~Scratchoff Ticket~n~~g~You Won!~n~~s~Congratulations, you won ~g~$" .. amount .. "~s~!")
+    ESX.ShowNotification("~o~Scratchoff Ticket~n~~g~You Won!~n~~s~Congratulations, you won ~g~$" .. amount .. "~s~!")
 end
 
 --[[
@@ -78,5 +78,5 @@ end
    void
 ]]
 function showLostNotification()
-  ESX.ShowNotification("~o~Scratchoff Ticket~n~~r~You Lost!~n~~s~Better luck next time!")
+    ESX.ShowNotification("~o~Scratchoff Ticket~n~~r~You Lost!~n~~s~Better luck next time!")
 end
